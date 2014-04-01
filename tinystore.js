@@ -28,13 +28,13 @@
 
     if (this.enabled) {
       try {
-        this.session = JSON.parse(this.store[name]) || {};
-      } catch (e) {}
+        this.session = JSON.parse(this.store[this.name]) || {};
+      } catch (err) {}
     }
 
     this.save = function () {
       if (this.enabled) {
-        this.store[name] = JSON.stringify(this.session);
+        this.store[this.name] = JSON.stringify(this.session);
       }
       return this.session;
     };
@@ -59,7 +59,7 @@
     this.clear = function () {
       this.session = {};
       if (this.enabled) {
-        delete localStorage[name];
+        delete localStorage[this.name];
       }
     };
   }
