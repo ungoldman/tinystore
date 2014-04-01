@@ -35,13 +35,17 @@
     };
 
     this.remove = function (key) {
+      var value = this.session[key];
       delete this.session[key];
-      return this.save();
+      this.save();
+      return value;
     };
 
     this.clear = function () {
       this.session = {};
-      return this.save();
+      if (this.enabled) {
+        localStorage.removeItem(name);
+      }
     };
   }
 
