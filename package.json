@@ -1,0 +1,22 @@
+{
+  "name": "tinystore",
+  "version": "0.0.0",
+  "description": "tiny localStorage wrapper",
+  "main": "tinystore.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gist.github.com/9902709.git"
+  },
+  "keywords": [
+    "localStorage"
+  ],
+  "author": "Nate Goldman <nate@ngoldman.me>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gist.github.com/9902709"
+  },
+  "homepage": "https://gist.github.com/9902709"
+}
