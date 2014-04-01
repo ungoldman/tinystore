@@ -4,6 +4,8 @@ A tiny localStorage wrapper.
 
 Useful for interacting with a persistent namespaced object store within localStorage without messing with anything else that might be there (like on *.github.io).
 
+Similar in style to [store.js](https://github.com/marcuswestin/store.js/) but for a slightly different use case (and far less ambitious).
+
 ## API
 
 ```js
