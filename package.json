@@ -18,5 +18,12 @@
   "bugs": {
     "url": "https://gist.github.com/9902709"
   },
-  "homepage": "https://gist.github.com/9902709"
+  "homepage": "https://gist.github.com/9902709",
+  "devDependencies": {
+    "karma-chai": "~0.1.0",
+    "karma-mocha": "~0.1.3",
+    "karma-mocha-reporter": "~0.2.2",
+    "karma-phantomjs-launcher": "~0.1.2",
+    "karma": "~0.12.2"
+  }
 }

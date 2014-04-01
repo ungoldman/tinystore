@@ -40,3 +40,11 @@ store.remove('whatever')
 store.clear()
 // -> {}
 ```
+
+## Tests (in progress)
+
+```bash
+npm install
+npm install -g karma
+karma start test/karma.conf
+```
