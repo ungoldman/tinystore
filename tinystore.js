@@ -1,6 +1,8 @@
 (function(global){
 
   function TinyStore (name) {
+    this.version = '0.0.1';
+
     this.enabled = (function(){
       try {
         return 'localStorage' in window && window.localStorage !== null;

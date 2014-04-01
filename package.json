@@ -1,14 +1,14 @@
 {
   "name": "tinystore",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "tiny localStorage wrapper",
   "main": "tinystore.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/karma/bin/karma start test/karma.conf.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://gist.github.com/9902709.git"
+    "url": "https://github.com/ngoldman/tinystore.git"
   },
   "keywords": [
     "localStorage"
@@ -16,9 +16,9 @@
   "author": "Nate Goldman <nate@ngoldman.me>",
   "license": "ISC",
   "bugs": {
-    "url": "https://gist.github.com/9902709"
+    "url": "https://github.com/ngoldman/tinystore/issues"
   },
-  "homepage": "https://gist.github.com/9902709",
+  "homepage": "https://github.com/ngoldman/tinystore",
   "devDependencies": {
     "karma-chai": "~0.1.0",
     "karma-mocha": "~0.1.3",

@@ -97,8 +97,7 @@ store.clear()
 
 ```bash
 npm install
-npm install -g karma
-karma start test/karma.conf.js
+npm test
 ```
 
 ## License
