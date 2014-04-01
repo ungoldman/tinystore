@@ -29,6 +29,8 @@ store.session
 
 // you can manipulate the session object directly if that's your jam
 store.session.whatever = { 'doge': 'sweater vests' }
+
+// save will persist the `session` object (`set` does this automatically)
 store.save()
 // -> { "saturday": "karaoke", "sunday": ["hangover", "NaptimePDX"], "monday": { "work": ["meetings", "coding"] }, "whatever": { "doge": "sweater vests" } }
 
