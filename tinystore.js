@@ -5,16 +5,18 @@
     this.store = optionalStore || localStorage;
 
     try {
-      if (this.store === localStorage) {
-        if ('localStorage' in window && window.localStorage) {
+      if (this.store) {
+        if (this.store === localStorage) {
+          if ('localStorage' in window && window.localStorage) {
+            this.enabled = true;
+          }
+        } else if (this.store === sessionStorage) {
+          if ('sessionStorage' in window && window.sessionStorage) {
+            this.enabled = true;
+          }
+        } else {
           this.enabled = true;
         }
-      } else if (this.store === sessionStorage) {
-        if ('sessionStorage' in window && window.sessionStorage) {
-          this.enabled = true;
-        }
-      } else if (this.store) {
-        this.enabled = true;
       } else {
         this.enabled = false;
       }
