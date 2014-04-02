@@ -15,6 +15,12 @@
     "localStorage"
   ],
   "author": "Nate Goldman <nate@ngoldman.me>",
+  "contributors": [
+    {
+      "name": "Jerry Sievert",
+      "email": "code@legitimatesounding.com"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ngoldman/tinystore/issues"
