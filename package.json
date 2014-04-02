@@ -5,7 +5,7 @@
   "main": "tinystore.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start test/karma.conf.js",
-    "minify": "./node_modules/minify/bin/minify tinystore.js tinystore.min.js"
+    "minify": "node scripts/minify.js"
   },
   "repository": {
     "type": "git",
