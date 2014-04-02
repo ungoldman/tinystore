@@ -12,7 +12,10 @@
     "url": "https://github.com/ngoldman/tinystore.git"
   },
   "keywords": [
-    "localStorage"
+    "localStorage",
+    "sessionStorage",
+    "web storage",
+    "object store"
   ],
   "author": "Nate Goldman <nate@ngoldman.me>",
   "contributors": [
