@@ -2,34 +2,26 @@
 
   function TinyStore (name, optionalStore) {
     this.version = '0.0.2';
+    this.session = {};
     this.store = optionalStore || localStorage;
+    this.name = name || 'TinyStore';
 
     try {
-      if (this.store) {
-        if (this.store === localStorage) {
-          if ('localStorage' in window && window.localStorage) {
-            this.enabled = true;
-          }
-        } else if (this.store === sessionStorage) {
-          if ('sessionStorage' in window && window.sessionStorage) {
-            this.enabled = true;
-          }
-        } else {
-          this.enabled = true;
-        }
-      } else {
-        this.enabled = false;
+      if (this.store === localStorage && localStorage.getItem) {
+        this.enabled = true;
+      } else if (this.store === sessionStorage && sessionStorage.getItem) {
+        this.enabled = true;
+      } else if (this.store && typeof this.store === 'object') {
+        this.enabled = true;
       }
-    } catch (err) {
+    } catch (e) {
       this.enabled = false;
     }
-
-    this.session = {};
 
     if (this.enabled) {
       try {
         this.session = JSON.parse(this.store[this.name]) || {};
-      } catch (err) {}
+      } catch (e) {}
     }
 
     this.save = function () {
@@ -59,7 +51,7 @@
     this.clear = function () {
       this.session = {};
       if (this.enabled) {
-        delete localStorage[this.name];
+        delete this.store[this.name];
       }
     };
   }
