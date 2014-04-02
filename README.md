@@ -1,29 +1,39 @@
 # TinyStore
 
-A tiny localStorage wrapper.
+A tiny web storage wrapper. Works with localStorage, sessionStorage, and plain objects.
 
-Useful for interacting with a persistent namespaced object store within localStorage without messing with anything else that might be there (like on *.github.io).
+Useful for interacting with a persistent namespaced object store within localStorage or sessionStorage without messing with anything else that might be there (like on *.github.io).
 
 Similar in style to [store.js](https://github.com/marcuswestin/store.js/) but for a slightly different use case (and far less ambitious).
 
 ## API
 
-### `new TinyStore(key)`
+### `new TinyStore(name, optionalStore)`
 
-The constructor takes a string as a key for the object to store in localStorage.
+The constructor takes a string as a name for the object to store in localStorage.
 
 ```js
 var store = new TinyStore('memories')
 ```
 
+Optionally, an alternative storage mechanism can be specified. localStorage, sessionStorage, and plain objects are supported. Default is localStorage.
+
+```js
+var localStore = new TinyStore('local', localStorage)
+var sessionStore = new TinyStore('session', sessionStorage)
+
+var obj = {}
+var objStore = new TinyStore('obj', obj)
+```
+
 ### `.enabled`
 
-`.enabled` is a boolean flag to show if localStorage is available or not.
+`.enabled` is a boolean flag to show if the specified store is available or not.
 
 ```js
 store.enabled
-// -> true (you've got localStorage!)
-// -> false (this browser's no good!)
+// -> true (you've got localStorage/sessionStorage/a plain object!)
+// -> false (something went horribly wrong!)
 ```
 
 ### `.set(key, value)`

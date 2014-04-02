@@ -1,7 +1,7 @@
 {
   "name": "tinystore",
-  "version": "0.0.1",
-  "description": "tiny localStorage wrapper",
+  "version": "0.0.2",
+  "description": "tiny web storage wrapper",
   "main": "tinystore.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start test/karma.conf.js"
