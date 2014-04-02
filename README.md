@@ -110,6 +110,13 @@ npm install
 npm test
 ```
 
+## Minification
+
+```bash
+npm install
+npm run minify
+```
+
 ## License
 
 ISC
