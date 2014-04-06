@@ -1,6 +1,6 @@
 # TinyStore
 
-A tiny web storage wrapper. Works with localStorage, sessionStorage, and plain objects.
+A tiny web storage wrapper (< 1k minified). Works with localStorage, sessionStorage, and plain objects.
 
 Useful for interacting with a persistent namespaced object store within localStorage or sessionStorage without messing with anything else that might be there (like on *.github.io).
 
