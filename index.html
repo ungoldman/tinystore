@@ -70,7 +70,7 @@
 <a name="enabled" class="anchor" href="#enabled"><span class="octicon octicon-link"></span></a><code>.enabled</code>
 </h3>
 
-<p><code>.enabled</code> is a boolean flag to show if the specified store is available or not.</p>
+<p>A boolean flag to show if the specified store is available or not.</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">enabled</span>
 <span class="c1">// -&gt; true (you've got localStorage/sessionStorage/an object/a function!)</span>
@@ -81,7 +81,7 @@
 <a name="setkey-value" class="anchor" href="#setkey-value"><span class="octicon octicon-link"></span></a><code>.set(key, value)</code>
 </h3>
 
-<p><code>.set()</code> takes a key and a value and saves the pair to storage. The key should be a string, and the value can be any standard javascript thing (string, number, array, object).</p>
+<p>Takes a key and value and saves the pair to storage. The key should be a string, and the value can be any standard JSON value (string, number, array, object).</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'saturday'</span><span class="p">,</span> <span class="s1">'karaoke'</span><span class="p">)</span>
 <span class="c1">// -&gt; "karaoke"</span>
@@ -97,7 +97,7 @@
 <a name="getkey" class="anchor" href="#getkey"><span class="octicon octicon-link"></span></a><code>.get(key)</code>
 </h3>
 
-<p><code>.get()</code> takes a key string and returns the value if it exists.</p>
+<p>Returns a key's value if it exists.</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'saturday'</span><span class="p">)</span>
 <span class="c1">// -&gt; "karaoke"</span>
@@ -110,7 +110,7 @@
 <a name="session" class="anchor" href="#session"><span class="octicon octicon-link"></span></a><code>.session</code>
 </h3>
 
-<p><code>.session</code> is a plain old object. It's what gets parsed out of storage and stringified back in.</p>
+<p>A plain old object that gets parsed out of storage and stringified back in.</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">session</span>
 <span class="c1">// -&gt; { "saturday": "karaoke", "sunday": ["hangover", "NaptimePDX"], "monday": { "work": ["meetings", "coding"] } }</span>
@@ -124,7 +124,7 @@
 <a name="save" class="anchor" href="#save"><span class="octicon octicon-link"></span></a><code>.save()</code>
 </h3>
 
-<p><code>.save()</code> will persist the <code>session</code> object (<code>.set()</code> does this automatically).</p>
+<p>Persists the <code>session</code> object (<code>.set()</code> does this automatically).</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">save</span><span class="p">()</span>
 <span class="c1">// -&gt; { "saturday": "karaoke", "sunday": ["hangover", "NaptimePDX"], "monday": { "work": ["meetings", "coding"] }, "whatever": { "doge": "sweater vests" } }</span>
@@ -134,7 +134,7 @@
 <a name="removekey" class="anchor" href="#removekey"><span class="octicon octicon-link"></span></a><code>.remove(key)</code>
 </h3>
 
-<p><code>.remove()</code> will remove the given key from the <code>.session</code> object and save the change to storage. It will also return the key's value in case you want to do something fancy.</p>
+<p>Removes a given key from the <code>.session</code> object and saves the change to storage. Returns the key's value in case you want to do something fancy.</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'whatever'</span><span class="p">)</span>
 <span class="c1">// -&gt; { 'doge': 'sweater vests' }</span>
@@ -144,7 +144,7 @@
 <a name="clear" class="anchor" href="#clear"><span class="octicon octicon-link"></span></a><code>.clear()</code>
 </h3>
 
-<p><code>.clear()</code> will remove the item from storage, if enabled, and reset the session object.</p>
+<p>Removes the item from storage, if enabled, and resets the <code>.session</code> object.</p>
 
 <div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
 <span class="c1">// -&gt; {}</span>
