@@ -1,6 +1,6 @@
 # TinyStore
 
-A tiny web storage wrapper (< 1k minified). Works with localStorage, sessionStorage, and plain objects.
+A tiny web storage wrapper (< 1k minified). Works with localStorage, sessionStorage, objects, and functions.
 
 Useful for interacting with a persistent namespaced object store within localStorage or sessionStorage without messing with anything else that might be there (like on *.github.io).
 
@@ -16,7 +16,7 @@ The constructor takes a string as a name for the object to store in localStorage
 var store = new TinyStore('memories')
 ```
 
-Optionally, an alternative storage mechanism can be specified. localStorage, sessionStorage, and plain objects are supported. Default is localStorage.
+Optionally, an alternative storage mechanism can be specified. localStorage, sessionStorage, objects, and functions are supported (default is localStorage).
 
 ```js
 var localStore = new TinyStore('local', localStorage)
@@ -32,13 +32,13 @@ var objStore = new TinyStore('obj', obj)
 
 ```js
 store.enabled
-// -> true (you've got localStorage/sessionStorage/a plain object!)
+// -> true (you've got localStorage/sessionStorage/an object/a function!)
 // -> false (something went horribly wrong!)
 ```
 
 ### `.set(key, value)`
 
-`.set()` takes a key and a value and saves the pair to localStorage. The key should be a string, and the value can be any standard javascript thing (string, number, array, object).
+`.set()` takes a key and a value and saves the pair to storage. The key should be a string, and the value can be any standard javascript thing (string, number, array, object).
 
 ```js
 store.set('saturday', 'karaoke')
@@ -65,14 +65,14 @@ store.get('friday')
 
 ### `.session`
 
-`.session` is a plain old JS object. It's what gets parsed out of localStorage and stringified back in.
+`.session` is a plain old object. It's what gets parsed out of storage and stringified back in.
 
 ```js
 store.session
 // -> { "saturday": "karaoke", "sunday": ["hangover", "NaptimePDX"], "monday": { "work": ["meetings", "coding"] } }
 
 // you can manipulate the session object directly if that's your jam
-// keep in mind you'll have to manually `.save()` when you do this
+// keep in mind you'll have to manually `.save()` afterwards when you do this
 store.session.whatever = { 'doge': 'sweater vests' }
 ```
 
@@ -87,7 +87,7 @@ store.save()
 
 ### `.remove(key)`
 
-`.remove()` will remove the key passed as a parameter from the `.session` object and save the change to localStorage. It will also return the value of the key you removed in case you want to do something fancy.
+`.remove()` will remove the given key from the `.session` object and save the change to storage. It will also return the key's value in case you want to do something fancy.
 
 ```js
 store.remove('whatever')
@@ -96,7 +96,7 @@ store.remove('whatever')
 
 ### `.clear()`
 
-`.clear()` will reset the session object and remove the item from localStorage if localStorage is enabled.
+`.clear()` will remove the item from storage, if enabled, and reset the session object.
 
 ```js
 store.clear()

@@ -3,20 +3,21 @@
   function TinyStore (name, optionalStore) {
     this.version = '0.0.2';
     this.session = {};
-    this.store = optionalStore || localStorage;
+    this.store = typeof optionalStore !== 'undefined' ? optionalStore : localStorage;
     this.name = name || 'TinyStore';
     this.enabled = false;
 
-    try {
-      if (this.store === localStorage && localStorage.getItem) {
-        this.enabled = true;
-      } else if (this.store === sessionStorage && sessionStorage.getItem) {
-        this.enabled = true;
-      } else if (this.store &&
-        (typeof this.store === 'object' || typeof this.store === 'function')) {
-        this.enabled = true;
-      }
-    } catch (e) {}
+    // conditions for valid object store:
+    // * must not be undefined, and
+    //   * have a getItem & setItem method (localStorage or sessionStorage), or
+    //   * be an object, or
+    //   * be a function
+    if (typeof this.store !== 'undefined' &&
+      ((typeof this.store.getItem === 'function' && typeof this.store.setItem === 'function') ||
+        typeof this.store === 'object' || typeof this.store === 'function'
+      )) {
+      this.enabled = true;
+    }
 
     if (this.enabled) {
       try {
