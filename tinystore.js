@@ -5,18 +5,18 @@
     this.session = {};
     this.store = optionalStore || localStorage;
     this.name = name || 'TinyStore';
+    this.enabled = false;
 
     try {
       if (this.store === localStorage && localStorage.getItem) {
         this.enabled = true;
       } else if (this.store === sessionStorage && sessionStorage.getItem) {
         this.enabled = true;
-      } else if (this.store && typeof this.store === 'object') {
+      } else if (this.store &&
+        (typeof this.store === 'object' || typeof this.store === 'function')) {
         this.enabled = true;
       }
-    } catch (e) {
-      this.enabled = false;
-    }
+    } catch (e) {}
 
     if (this.enabled) {
       try {
