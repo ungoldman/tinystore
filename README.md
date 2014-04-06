@@ -36,7 +36,7 @@ var functionStore = new TinyStore('fn', fn)
 
 ### `.enabled`
 
-`.enabled` is a boolean flag to show if the specified store is available or not.
+A boolean flag to show if the specified store is available or not.
 
 ```js
 store.enabled
@@ -46,7 +46,7 @@ store.enabled
 
 ### `.set(key, value)`
 
-`.set()` takes a key and a value and saves the pair to storage. The key should be a string, and the value can be any standard javascript thing (string, number, array, object).
+Takes a key and value and saves the pair to storage. The key should be a string, and the value can be any standard JSON value (string, number, array, object).
 
 ```js
 store.set('saturday', 'karaoke')
@@ -61,7 +61,7 @@ store.set('monday', { 'work': ['meetings', 'coding'] })
 
 ### `.get(key)`
 
-`.get()` takes a key string and returns the value if it exists.
+Returns a key's value if it exists.
 
 ```js
 store.get('saturday')
@@ -73,7 +73,7 @@ store.get('friday')
 
 ### `.session`
 
-`.session` is a plain old object. It's what gets parsed out of storage and stringified back in.
+A plain old object that gets parsed out of storage and stringified back in.
 
 ```js
 store.session
@@ -86,7 +86,7 @@ store.session.whatever = { 'doge': 'sweater vests' }
 
 ### `.save()`
 
-`.save()` will persist the `session` object (`.set()` does this automatically).
+Persists the `session` object (`.set()` does this automatically).
 
 ```js
 store.save()
@@ -95,7 +95,7 @@ store.save()
 
 ### `.remove(key)`
 
-`.remove()` will remove the given key from the `.session` object and save the change to storage. It will also return the key's value in case you want to do something fancy.
+Removes a given key from the `.session` object and saves the change to storage. Returns the key's value in case you want to do something fancy.
 
 ```js
 store.remove('whatever')
@@ -104,7 +104,7 @@ store.remove('whatever')
 
 ### `.clear()`
 
-`.clear()` will remove the item from storage, if enabled, and reset the session object.
+Removes the item from storage, if enabled, and resets the `.session` object.
 
 ```js
 store.clear()
