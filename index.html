@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>TinyStore by ngoldman</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>TinyStore</h1>
+        <p>tiny web storage wrapper</p>
+
+        <p class="view"><a href="https://github.com/ngoldman/tinystore">View the Project on GitHub <small>ngoldman/tinystore</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ngoldman/tinystore/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ngoldman/tinystore/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ngoldman/tinystore">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="tinystore" class="anchor" href="#tinystore"><span class="octicon octicon-link"></span></a>TinyStore</h1>
+
+<p>A tiny web storage wrapper. Works with localStorage, sessionStorage, and plain objects.</p>
+
+<p>Useful for interacting with a persistent namespaced object store within localStorage or sessionStorage without messing with anything else that might be there (like on *.github.io).</p>
+
+<p>Similar in style to <a href="https://github.com/marcuswestin/store.js/">store.js</a> but for a slightly different use case (and far less ambitious).</p>
+
+<h2>
+<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h2>
+
+<h3>
+<a name="new-tinystorename-optionalstore" class="anchor" href="#new-tinystorename-optionalstore"><span class="octicon octicon-link"></span></a><code>new TinyStore(name, optionalStore)</code>
+</h3>
+
+<p>The constructor takes a string as a name for the object to store in localStorage.</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TinyStore</span><span class="p">(</span><span class="s1">'memories'</span><span class="p">)</span>
+</pre></div>
+
+<p>Optionally, an alternative storage mechanism can be specified. localStorage, sessionStorage, and plain objects are supported. Default is localStorage.</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">localStore</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TinyStore</span><span class="p">(</span><span class="s1">'local'</span><span class="p">,</span> <span class="nx">localStorage</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">sessionStore</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TinyStore</span><span class="p">(</span><span class="s1">'session'</span><span class="p">,</span> <span class="nx">sessionStorage</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="kd">var</span> <span class="nx">objStore</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TinyStore</span><span class="p">(</span><span class="s1">'obj'</span><span class="p">,</span> <span class="nx">obj</span><span class="p">)</span>
+</pre></div>
+
+<h3>
+<a name="enabled" class="anchor" href="#enabled"><span class="octicon octicon-link"></span></a><code>.enabled</code>
+</h3>
+
+<p><code>.enabled</code> is a boolean flag to show if the specified store is available or not.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">enabled</span>
+<span class="c1">// -&gt; true (you've got localStorage/sessionStorage/a plain object!)</span>
+<span class="c1">// -&gt; false (something went horribly wrong!)</span>
+</pre></div>
+
+<h3>
+<a name="setkey-value" class="anchor" href="#setkey-value"><span class="octicon octicon-link"></span></a><code>.set(key, value)</code>
+</h3>
+
+<p><code>.set()</code> takes a key and a value and saves the pair to localStorage. The key should be a string, and the value can be any standard javascript thing (string, number, array, object).</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'saturday'</span><span class="p">,</span> <span class="s1">'karaoke'</span><span class="p">)</span>
+<span class="c1">// -&gt; "karaoke"</span>
+
+<span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'sunday'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'hangover'</span><span class="p">,</span> <span class="s1">'NaptimePDX'</span><span class="p">])</span>
+<span class="c1">// -&gt; ["hangover", "NaptimePDX"]</span>
+
+<span class="nx">store</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'monday'</span><span class="p">,</span> <span class="p">{</span> <span class="s1">'work'</span><span class="o">:</span> <span class="p">[</span><span class="s1">'meetings'</span><span class="p">,</span> <span class="s1">'coding'</span><span class="p">]</span> <span class="p">})</span>
+<span class="c1">// -&gt; { "work": ["meetings", "coding"] }</span>
+</pre></div>
+
+<h3>
+<a name="getkey" class="anchor" href="#getkey"><span class="octicon octicon-link"></span></a><code>.get(key)</code>
+</h3>
+
+<p><code>.get()</code> takes a key string and returns the value if it exists.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'saturday'</span><span class="p">)</span>
+<span class="c1">// -&gt; "karaoke"</span>
+
+<span class="nx">store</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'friday'</span><span class="p">)</span>
+<span class="c1">// -&gt; undefined</span>
+</pre></div>
+
+<h3>
+<a name="session" class="anchor" href="#session"><span class="octicon octicon-link"></span></a><code>.session</code>
+</h3>
+
+<p><code>.session</code> is a plain old JS object. It's what gets parsed out of localStorage and stringified back in.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">session</span>
+<span class="c1">// -&gt; { "saturday": "karaoke", "sunday": ["hangover", "NaptimePDX"], "monday": { "work": ["meetings", "coding"] } }</span>
+
+<span class="c1">// you can manipulate the session object directly if that's your jam</span>
+<span class="c1">// keep in mind you'll have to manually `.save()` when you do this</span>
+<span class="nx">store</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">whatever</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'doge'</span><span class="o">:</span> <span class="s1">'sweater vests'</span> <span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="save" class="anchor" href="#save"><span class="octicon octicon-link"></span></a><code>.save()</code>
+</h3>
+
+<p><code>.save()</code> will persist the <code>session</code> object (<code>.set()</code> does this automatically).</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">save</span><span class="p">()</span>
+<span class="c1">// -&gt; { "saturday": "karaoke", "sunday": ["hangover", "NaptimePDX"], "monday": { "work": ["meetings", "coding"] }, "whatever": { "doge": "sweater vests" } }</span>
+</pre></div>
+
+<h3>
+<a name="removekey" class="anchor" href="#removekey"><span class="octicon octicon-link"></span></a><code>.remove(key)</code>
+</h3>
+
+<p><code>.remove()</code> will remove the key passed as a parameter from the <code>.session</code> object and save the change to localStorage. It will also return the value of the key you removed in case you want to do something fancy.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s1">'whatever'</span><span class="p">)</span>
+<span class="c1">// -&gt; { 'doge': 'sweater vests' }</span>
+</pre></div>
+
+<h3>
+<a name="clear" class="anchor" href="#clear"><span class="octicon octicon-link"></span></a><code>.clear()</code>
+</h3>
+
+<p><code>.clear()</code> will reset the session object and remove the item from localStorage if localStorage is enabled.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">store</span><span class="p">.</span><span class="nx">clear</span><span class="p">()</span>
+<span class="c1">// -&gt; {}</span>
+</pre></div>
+
+<h2>
+<a name="tests" class="anchor" href="#tests"><span class="octicon octicon-link"></span></a>Tests</h2>
+
+<div class="highlight highlight-bash"><pre>npm install
+npm <span class="nb">test</span>
+</pre></div>
+
+<h2>
+<a name="minification" class="anchor" href="#minification"><span class="octicon octicon-link"></span></a>Minification</h2>
+
+<div class="highlight highlight-bash"><pre>npm install
+npm run minify
+</pre></div>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>ISC</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ngoldman">ngoldman</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
