@@ -19,11 +19,19 @@ var store = new TinyStore('memories')
 Optionally, an alternative storage mechanism can be specified. localStorage, sessionStorage, objects, and functions are supported (default is localStorage).
 
 ```js
+// localStorage
 var localStore = new TinyStore('local', localStorage)
+
+// sessionStorage
 var sessionStore = new TinyStore('session', sessionStorage)
 
+// object
 var obj = {}
-var objStore = new TinyStore('obj', obj)
+var objectStore = new TinyStore('obj', obj)
+
+// function
+var fn = function () {}
+var functionStore = new TinyStore('fn', fn)
 ```
 
 ### `.enabled`
