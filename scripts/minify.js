@@ -5,16 +5,21 @@ var d = new Date();
 var dateString = ('0' + d.getDate()).slice(-2) + '-'
   + ('0' + (d.getMonth()+1)).slice(-2) + '-'
   + d.getFullYear();
-var banner = '/*! ' + pkg.name + ' - ' + pkg.version + ' - ' + dateString + '\n'
-  + '*   ' + pkg.homepage + '\n'
-  + '*   Copyright (c) ' + d.getFullYear() + ' Nate Goldman' + '\n'
-  + '*   ISC License */\n\n';
+var br = ' | ';
+var banner = '/*! ' + pkg.name + ' v' + pkg.version + ' (' + dateString + ')' + br
+  + '(c) ' + d.getFullYear() + ' Nate Goldman' + br
+  + pkg.homepage.split('//')[1] + '#license */\n';
 
 minify.optimize('tinystore.js', {
   callback: function (data) {
     fs.writeFile('tinystore.min.js', banner + data, function (err) {
       if (err) throw err;
+      var oStats = fs.statSync('tinystore.js');
+      var mStats = fs.statSync('tinystore.min.js');
+
       console.log('Minified and saved!');
+      console.log('original:', oStats.size / 1000, 'kb');
+      console.log('minified:', mStats.size / 1000, 'kb');
     });
   }
 });
