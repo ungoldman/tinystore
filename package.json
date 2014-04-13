@@ -1,6 +1,6 @@
 {
   "name": "tinystore",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "tiny web storage wrapper",
   "main": "tinystore.js",
   "scripts": {
