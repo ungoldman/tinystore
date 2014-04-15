@@ -1,5 +1,8 @@
 # TinyStore Changelog
 
+# v0.0.4
+* add bower manifest
+
 # v0.0.3
 * use proper prototypal inheritance
 * improve enabled check

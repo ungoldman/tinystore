@@ -1,0 +1,24 @@
+{
+  "name": "tinystore",
+  "main": "tinystore.js",
+  "version": "0.0.4",
+  "homepage": "https://github.com/ngoldman/tinystore",
+  "authors": [
+    "Nate Goldman <nate@ngoldman.me>"
+  ],
+  "description": "tiny web storage wrapper",
+  "keywords": [
+    "localStorage",
+    "sessionStorage",
+    "web storage",
+    "object store"
+  ],
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "scripts"
+  ]
+}
