@@ -111,17 +111,21 @@ store.clear()
 // -> {}
 ```
 
-## Tests
+## Install
 
 ```bash
 npm install
+```
+
+## Test
+
+```bash
 npm test
 ```
 
-## Minification
+## Minify
 
 ```bash
-npm install
 npm run minify
 ```
 
